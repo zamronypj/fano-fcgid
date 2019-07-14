@@ -9,6 +9,9 @@ unit HomeView;
 
 interface
 
+{$MODE OBJFPC}
+{$H+}
+
 uses
 
     fano;
@@ -16,12 +19,15 @@ uses
 type
 
     (*!-----------------------------------------------
-     * View instance 
+     * View instance
      *
      * @author [[AUTHOR_NAME]] <[[AUTHOR_EMAIL]]>
      *------------------------------------------------*)
     THomeView = class(TInjectableObject, IView)
+    private
+        fHtml : string;
     public
+        constructor create(const html : string);
 
         (*!------------------------------------------------
          * render view
@@ -38,6 +44,11 @@ type
 
 implementation
 
+    constructor THomeView.create(const html : string);
+    begin
+        fHtml := html;
+    end;
+
     (*!------------------------------------------------
      * render view
      *------------------------------------------------
@@ -50,7 +61,7 @@ implementation
         const response : IResponse
     ) : IResponse;
     begin
-        {---put your code here---}
+        response.body().write(fHtml);
         result := response;
     end;
 
