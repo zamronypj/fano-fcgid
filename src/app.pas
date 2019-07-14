@@ -16,13 +16,11 @@ var
     appInstance : IWebApplication;
 
 begin
-    writeln('Starting application at 127.0.0.1:20477');
-
     (*!-----------------------------------------------
      * Bootstrap FastCGI application
      *
      * @author AUTHOR_NAME <author@email.tld>
      *------------------------------------------------*)
-    appInstance := TBootstrapApp.create('127.0.0.1', 20477);
+    appInstance := TBootstrapApp.create();
     appInstance.run();
 end.
